@@ -29,11 +29,12 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
 
     if test_idx:
         X_test, y_test = X[test_idx, :], y[test_idx]
-        plt.scatter(X_test[:, 0], X_test[: 1],
-                    alpha=1.0,
+        plt.scatter(x=X_test[:, 0],
+                    y=X_test[:, 1],
                     c='',
+                    edgecolor='black',
+                    alpha=1.0,
                     linewidth=1,
                     marker='o',
-                    label='test set',
                     s=100,
-                    edgecolor='black')
+                    label='test set')
