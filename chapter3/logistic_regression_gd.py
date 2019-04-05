@@ -25,7 +25,7 @@ class LogisticRegressionGD(object):
     def net_input(self, X):
         return np.dot(X, self.w_[1:]) + self.w_[0]
 
-    def activation(self, X):
+    def activation(self, z):
         return 1. / (1. + np.exp(-np.clip(z, -250, 250)))
 
     def predict(self, X):
