@@ -1,7 +1,7 @@
 from sklearn.base import clone
 from itertools import combinations
 import numpy as np
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 
@@ -21,7 +21,6 @@ class SBS():
         self.subsets_ = [self.indices_]
         score = self._calc_score(
             X_train, y_train, X_test, y_test, self.indices_)
-
         self.scores_ = [score]
         while dim > self.k_features:
             scores = []
@@ -35,7 +34,7 @@ class SBS():
             best = np.argmax(scores)
             self.indices_ = subsets[best]
             self.subsets_.append(self.indices_)
-            dim = -1
+            dim = dim - 1
             self.scores_.append(scores[best])
 
         self.k_score_ = self.scores_[-1]
