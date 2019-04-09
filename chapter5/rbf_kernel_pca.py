@@ -16,6 +16,6 @@ def rbf_kernel_pca(X, gamma, n_components):
     eigvals, eigvecs = eigh(K)
     eigvals, eigvecs = eigvals[::-1], eigvecs[:, ::-1]
 
-    X_pc = np.column_stack((eigvecs[:, i] for i in range(n_components)))
-
-    return X_pc
+    alphas = np.column_stack((eigvecs[:, i] for i in range(n_components)))
+    lambdas = [eigvals[i] for i in range(n_components)]
+    return alphas, lambdas
